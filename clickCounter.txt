@@ -1,0 +1,64 @@
+App.js
+
+import ClickCounter from './components/ClickCounter'
+
+import './App.css'
+
+const App = () => {
+  ;<ClickCounter />
+}
+
+export default App
+
+
+index.js
+
+
+import {Component} from 'react'
+
+class ClickCounter extends Component {
+  state = {count: 0}
+
+  clicked = () => {
+    this.setState(prevState => ({count: prevState.count + 1}))
+  }
+
+  render() {
+    const {count} = this.state
+
+    return (
+      <div className="total">
+        <h1>
+          Button has been clicked
+          <span className="number">{count}</span> times
+        </h1>
+
+        <p>click the below button to increase the count!</p>
+
+        <button onClick={this.clicked} type="button">
+          click me!
+        </button>
+      </div>
+    )
+  }
+}
+
+export default ClickCounter
+
+
+
+App.css
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
