@@ -1,0 +1,48 @@
+index.js src
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root'),
+)
+
+
+App.js
+
+import ClickCounter from './components/ClickCounter'
+
+import './App.css'
+
+const App = () => <ClickCounter />
+
+export default App
+
+
+index.js/components
+import {Component} from 'react'
+
+class ClickCounter extends Component{
+    state={count:0};
+    const onClicked=()=>{
+            this.setState((prevState)=>({count:prevState.count+1}))
+        }
+    render(){
+        const {count}=this.state
+        return(
+            <div>
+                <h1>The button has been clicked {count} times</h1>
+                <p>click the button to increase the count</p>
+                <button type="button" className="button" onClick={this.onClicked}>
+                Click me
+                </button>
+            </div>
+
+        )
+    }
+}
+export default ClickCounter
