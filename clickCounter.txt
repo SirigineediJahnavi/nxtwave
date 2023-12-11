@@ -8,9 +8,10 @@ const App = () => <ClickCounter />
 
 export default App
 
-
 index.js
-
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
 
 import {Component} from 'react'
 
@@ -33,15 +34,15 @@ class ClickCounter extends Component {
 
         <p>click the below button to increase the count!</p>
 
-        <button onClick={this.clicked} type="button">
-          click me!
-        </button>
+        <button onClick={this.clicked}>click me!</button>
       </div>
     )
   }
 }
 
+ReactDOM.render(ClickCounter, document.getElementById('root'))
 export default ClickCounter
+
 
 
 
