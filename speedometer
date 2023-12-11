@@ -1,0 +1,35 @@
+index.js ../components
+import {Component} from 'react'
+
+class Speedometer extends Component {
+  state = {count: 0}
+  accelerated = () => {
+    this.setState(prevState => ({count: prevState.count + 10}))
+  }
+
+  applyBreaks = () => {
+    this.setState(prevState => ({count: prevState.count - 10}))
+  }
+
+  render() {
+    const {count} = this.state
+    return (
+      <div>
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/speedometer-img.png"
+          alt="speedometer"
+          className="image"
+        />
+        <h1>Speed is {count} mph</h1>
+        <p>Min limit is 0 mph Max limit is 200mph</p>
+        <button type="button" onClick={this.accelerated}>
+          Accelerate
+        </button>
+        <button type="button" onClick={this.applyBreaks}>
+          Apply Break
+        </button>
+      </div>
+    )
+  }
+}
+export default Speedometer
