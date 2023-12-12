@@ -1,0 +1,28 @@
+import React, {Component} from 'react'
+
+class Welcome extends Component {
+  state = {subscribed: false}
+
+  clicked = () => {
+    this.setState(prevState => ({subscribed: !prevState.subscribed}))
+  }
+
+  render() {
+    const {subscribed} = this.state
+    let value
+    if (subscribed) {
+      value = <button>Subscribed</button>
+    } else {
+      value = <button>Subscribe</button>
+    }
+    return (
+      <div>
+        <h1>Welcome</h1>
+        <p>Thank you Happy Learning</p>
+        <button onClick={this.clicked}>{value}</button>
+      </div>
+    )
+  }
+}
+
+export default Welcome
