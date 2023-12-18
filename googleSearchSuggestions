@@ -1,0 +1,51 @@
+index.js Google Suggestions
+import SuggestionItem from '../../SuggestionItem'
+
+import {Component} from 'react'
+
+class GoogleSuggestions extends Component {
+  constructor(props) {
+    super(props)
+    const {suggestionsList} = props
+    state = {
+      searchValue: '',
+      updatedList: suggestionsList,
+    }
+  }
+  click = event => {
+    this.setState({searchValue: event.target.value})
+  }
+  render() {
+    const {search_value, updatedList} = this.state
+    const result = suggestionsList.filter(each =>
+      each.suggestion.includes(searchValue),
+    )
+    return (
+      <div>
+        <h1>google</h1>
+        <input
+          type="search"
+          placeholder="search"
+          value={searchValue}
+          onChange={this.click}
+        ></input>
+        <ul>
+          {result.map(each => (
+            <SuggestionItem suggestionsList={each} key={each.id} />
+          ))}
+        </ul>
+      </div>
+    )
+  }
+}
+export default GoogleSuggestions
+
+
+index.js SuggestionItem
+// Write your code here
+const SuggestionItem = props => {
+  const {suggestionsList} = this.props
+  const {suggestion} = this.suggestionsList
+  return <li>{suggestion}</li>
+}
+export default SuggestionItem
