@@ -1,0 +1,43 @@
+import {Component} from 'react'
+import './index.css'
+
+class LettersCalculator extends Component {
+  state = {
+    count: 0,
+    phrase: '',
+  }
+
+  handleChange = event => {
+    const {value} = event.target
+    this.setState({
+      phrase: value,
+      count: value.length,
+    })
+  }
+
+  render() {
+    const {count, phrase} = this.state
+    return (
+      <div>
+        <h1>Calculate the letters you enter</h1>
+        <label for="phraseInput">Enter the phrase</label>
+        <input
+          id="phraseInput"
+          type="text"
+          placeholder="Enter the phrase"
+          value={phrase}
+          onChange={this.handleChange}
+        />
+        <div className="button">
+          <p>No.of letters: {count}</p>
+        </div>
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/stop-watch-with-calculator-img.png "
+          alt="letters calculator"
+        />
+      </div>
+    )
+  }
+}
+
+export default LettersCalculator
